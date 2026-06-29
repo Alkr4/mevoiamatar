@@ -1,0 +1,54 @@
+### Health
+GET http://localhost:3000/api/health
+
+### Register
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Nuevo Usuario",
+  "email": "nuevo@demo.cl",
+  "password": "123456"
+}
+
+### Login
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "usuario@demo.cl",
+  "password": "User1234"
+}
+
+### Me
+GET http://localhost:3000/api/auth/me
+Authorization: Bearer TOKEN_AQUI
+
+### Galerías públicas
+GET http://localhost:3000/api/galleries/public
+
+### Mis galerías
+GET http://localhost:3000/api/galleries/my
+Authorization: Bearer TOKEN_AQUI
+
+### Crear galería
+POST http://localhost:3000/api/galleries
+Authorization: Bearer TOKEN_AQUI
+Content-Type: application/json
+
+{
+  "title": "Galería creada desde API",
+  "description": "Descripción de ejemplo",
+  "visibility": "public"
+}
+
+### Agregar foto por URL
+POST http://localhost:3000/api/galleries/1/photos
+Authorization: Bearer TOKEN_AQUI
+Content-Type: application/json
+
+{
+  "title": "Foto por URL",
+  "description": "Foto de ejemplo",
+  "imageUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+}
