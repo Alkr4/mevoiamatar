@@ -20,7 +20,21 @@ app.use(
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
         "upgrade-insecure-requests": null, // Desactiva forzar HTTPS en desarrollo
-	"img-src": ["'self'", "data:", "https://*.amazonaws.com", "http://*.amazonaws.com"]
+        
+        // Permitir scripts del CDN de Bootstrap
+        "script-src": ["'self'", "https://cdn.jsdelivr.net", "'unsafe-inline'"],
+        
+        // Permitir eventos onclick en el HTML (script-src-attr)
+        "script-src-attr": ["'unsafe-inline'"],
+        
+        // Añadir Unsplash a la lista blanca de imágenes para los datos de prueba
+        "img-src": [
+          "'self'", 
+          "data:", 
+          "https://*.amazonaws.com", 
+          "http://*.amazonaws.com",
+          "https://images.unsplash.com"
+        ]
       },
     },
   })

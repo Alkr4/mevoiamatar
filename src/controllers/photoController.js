@@ -11,9 +11,10 @@ export const addPhotoToGallery = async (req, res) => {
   let imageUrl = req.body.imageUrl;
   let filename = null;
 
+  // Lógica antigua que debes buscar y reemplazar:
   if (req.file) {
-    filename = req.file.filename;
-    imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+    filename = req.file.key; // Multer-s3 guarda el nombre aquí
+    imageUrl = req.file.location; // ¡Esta es la URL mágica directa de tu Bucket S3!
   }
 
   if (!imageUrl) return fail(res, 'Debes enviar una imagen o una URL de imagen', 422);
